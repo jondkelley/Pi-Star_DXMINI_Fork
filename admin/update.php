@@ -14,7 +14,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/update.php") {
   if (!isset($_GET['ajax'])) {
     system('sudo touch /var/log/pi-star/pi-star_update.log > /dev/null 2>&1 &');
     system('sudo echo "" > /var/log/pi-star/pi-star_update.log > /dev/null 2>&1 &');
-    system('sudo /usr/local/sbin/pistar-update > /dev/null 2>&1 &');
+    system('sudo /usr/local/sbin/dxmini-update > /dev/null 2>&1 &');
     }
 
   // Sanity Check Passed.
@@ -29,13 +29,13 @@ if ($_SERVER["PHP_SELF"] == "/admin/update.php") {
       $_SESSION['update_offset'] = 0;
     }
   }
-  
+
   if (isset($_GET['ajax'])) {
     //session_start();
     if (!file_exists('/var/log/pi-star/pi-star_update.log')) {
       exit();
     }
-    
+
     $handle = fopen('/var/log/pi-star/pi-star_update.log', 'rb');
     if (isset($_SESSION['update_offset'])) {
       fseek($handle, 0, SEEK_END);
@@ -48,10 +48,10 @@ if ($_SERVER["PHP_SELF"] == "/admin/update.php") {
     else {
       fseek($handle, 0, SEEK_END);
       $_SESSION['update_offset'] = ftell($handle);
-      } 
+      }
   exit();
   }
-  
+
 ?>
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -107,11 +107,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/update.php") {
   </table>
   </div>
   <div class="footer">
-  Pi-Star web config, &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
-  Need help? Click <a style="color: #ffffff;" href="https://www.facebook.com/groups/pistarusergroup/" target="_new">here for the Support Group</a><br />
-  Get your copy of Pi-Star from <a style="color: #ffffff;" href="http://www.pistar.uk/downloads/" target="_blank">here</a>.<br />
-  <br />
-  </div>
+  <?php print(VENDOR_FOOTER_STRING); ?>  </div>
   </div>
   </body>
   </html>

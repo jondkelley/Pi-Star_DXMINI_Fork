@@ -1,5 +1,6 @@
 <?php
 // Load the language support
+require_once('../config/dxmini.php');
 require_once('../config/language.php');
 // Load the Pi-Star Release file
 $pistarReleaseConfig = '/etc/pistar-release';
@@ -54,10 +55,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/expert/ssh_access.php") {
   <?php if (isset($shellPort)) { echo "<a href=\"http://".$_SERVER['HTTP_HOST'].":".$shellPort."\">Click here for fullscreen SSH client</a><br />\n"; } ?>
   </div>
   <div class="footer">
-  Pi-Star web config, &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
-  Need help? Click <a style="color: #ffffff;" href="https://www.facebook.com/groups/pistarusergroup/" target="_new">here for the Support Group</a><br />
-  Get your copy of Pi-Star from <a style="color: #ffffff;" href="http://www.pistar.uk/downloads/" target="_blank">here</a>.<br />
-  <br />
+  <?php print(VENDOR_FOOTER_STRING); ?>
   </div>
   </div>
   </body>

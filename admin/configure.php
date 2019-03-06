@@ -206,7 +206,7 @@ $MYCALL=strtoupper($callsign);
 <body onload="checkFrequency(); return false;">
 <div class="container">
 <div class="header">
-<div style="font-size: 8px; text-align: right; padding-right: 8px;">Pi-Star:<?php echo $configPistarRelease['Pi-Star']['Version']?> / <?php echo $lang['dashboard'].": ".$version; ?></div>
+<div style="font-size: 10px; text-align: right; padding-right: 8px;">Pi-Star:<?php echo $configPistarRelease['Pi-Star']['Version']?> / <?php echo $lang['dashboard'].": ".$version; ?></div>
 <h1>Pi-Star <?php echo $lang['digital_voice']." - ".$lang['configuration'];?></h1>
 <p style="padding-right: 5px; text-align: right; color: #ffffff;">
  <a href="/" style="color: #ffffff;"><?php echo $lang['dashboard'];?></a> |
@@ -302,7 +302,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
           system('sudo mount -o remount,ro /');
 	  echo "<br />\n</div>\n";
           echo "<div class=\"footer\">\nPi-Star web config, &copy; Andy Taylor (MW0MWZ) 2014-".date("Y").".<br />\n";
-          echo "Need help? Click <a style=\"color: #ffffff;\" href=\"https://www.facebook.com/groups/pistarusergroup/\" target=\"_new\">here for the Support Group</a><br />\n";
+          echo "Need help? Click <a style=\"color: #ffffff;\" href=\"https://www.facebook.com/groups/pistarusergroup/\" target=\"_new\">here for the DXMini Help Page</a><br />\n";
           echo "Get your copy of Pi-Star from <a style=\"color: #ffffff;\" href=\"http://www.pistar.uk/downloads/\" target=\"_blank\">here</a>.<br />\n";
           echo "<br />\n</div>\n</div>\n</body>\n</html>\n";
 	  die();
@@ -503,7 +503,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 	if (empty($_POST['pocsagAuthKey']) != TRUE ) {
 	  $configdapnetgw['DAPNET']['AuthKey'] = escapeshellcmd($_POST['pocsagAuthKey']);
 	}
-	
+
 	// Set the POCSAG Callsign
 	if (empty($_POST['pocsagCallsign']) != TRUE ) {
 	  $configdapnetgw['General']['Callsign'] = strtoupper(escapeshellcmd($_POST['pocsagCallsign']));
@@ -890,7 +890,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 	}
 
 	// Set the YSF2P25 Master
-	if (empty($_POST['ysf2p25StartupDstId']) != TRUE ) {	
+	if (empty($_POST['ysf2p25StartupDstId']) != TRUE ) {
 	  $newYSF2P25StartupHost = strtoupper(escapeshellcmd($_POST['ysf2p25StartupDstId']));
 
 	  if ($newYSF2P25StartupHost === "NONE") {
@@ -902,7 +902,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 	  }
 	  system($rollYSF2P25Startup);
 	}
-	
+
 	// Set the YSF2P25 P25Id
 	if (empty($_POST['ysf2p25Id']) != TRUE ) {
 	  $configysf2p25['P25 Network']['Id'] = preg_replace('/[^0-9]/', '', $_POST['ysf2p25Id']);
@@ -948,7 +948,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 
 	// Set YSF2DMR ID
 	if (empty($_POST['ysf2dmrId']) != TRUE ) {
-	  $newPostYsf2DmrId = preg_replace('/[^0-9]/', '', $_POST['ysf2dmrId']);	
+	  $newPostYsf2DmrId = preg_replace('/[^0-9]/', '', $_POST['ysf2dmrId']);
 	  $configysf2dmr['DMR Network']['Id'] = $newPostYsf2DmrId;
 	}
 
@@ -1066,7 +1066,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 	  }
 	  else { unset($configdmrgateway['XLX Network 1']['Startup']); }
 	}
-	
+
 	// XLX Module Override
 	if (empty($_POST['dmrMasterHost3StartupModule']) != TRUE ) {
 	  $dmrMasterHost3StartupModule = escapeshellcmd($_POST['dmrMasterHost3StartupModule']);
@@ -1514,7 +1514,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 	    $configmmdvm['General']['Duplex'] = 0;
 	    $configmmdvm['DMR Network']['Slot1'] = 0;
 	  }
-	  
+
 	  if ( $confHardware == 'nanodv' ) {
 	    $rollModemType = 'sudo sed -i "/modemType=/c\\modemType=MMDVM" /etc/dstarrepeater';
 	    $rollRepeaterType1 = 'sudo sed -i "/repeaterType1=/c\\repeaterType1=0" /etc/ircddbgateway';
@@ -1562,7 +1562,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 	    $configmmdvm['General']['Duplex'] = 0;
 	    $configmmdvm['DMR Network']['Slot1'] = 0;
 	  }
-            
+
 	  if ( $confHardware == 'dvmpicasthd' ) {
 	    $rollModemType = 'sudo sed -i "/modemType=/c\\modemType=DVMEGA" /etc/dstarrepeater';
 	    $rollDVMegaPort = 'sudo sed -i "/dvmegaPort=/c\\dvmegaPort=/dev/ttyS2" /etc/dstarrepeater';
@@ -1651,7 +1651,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
           if (escapeshellcmd($_POST['MMDVMModeP25']) == 'ON' )  { $configmmdvm['P25']['Enable'] = "1"; $configmmdvm['P25 Network']['Enable'] = "1"; $configysf2p25['Enabled']['Enabled'] = "0"; }
           if (escapeshellcmd($_POST['MMDVMModeP25']) == 'OFF' ) { $configmmdvm['P25']['Enable'] = "0"; $configmmdvm['P25 Network']['Enable'] = "0"; }
 	}
-	
+
 	// Set MMDVMHost NXDN Mode
 	if (empty($_POST['MMDVMModeNXDN']) != TRUE ) {
           if (escapeshellcmd($_POST['MMDVMModeNXDN']) == 'ON' )  { $configmmdvm['NXDN']['Enable'] = "1"; $configmmdvm['NXDN Network']['Enable'] = "1"; $configysf2nxdn['Enabled']['Enabled'] = "0"; }
@@ -1747,7 +1747,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 			$configdmrgateway['DMR Network 3']['Enabled'] = "0";
 		}
 	}
-	
+
 	// Set POCSAG Mode
 	if (empty($_POST['MMDVMModePOCSAG']) != TRUE ) {
           if (escapeshellcmd($_POST['MMDVMModePOCSAG']) == 'ON' )  { $configmmdvm['POCSAG']['Enable'] = "1"; $configmmdvm['POCSAG Network']['Enable'] = "1"; }
@@ -1911,7 +1911,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 	if (!isset($configysf2dmr['DMR Network']['Jitter'])) { $configysf2dmr['DMR Network']['Jitter'] = "500"; }
 	if (!isset($configysf2dmr['DMR Network']['EnableUnlink'])) { $configysf2dmr['DMR Network']['EnableUnlink'] = "1"; }
 	if (!isset($configysf2dmr['DMR Network']['TGUnlink'])) { $configysf2dmr['DMR Network']['TGUnlink'] = "4000"; }
-	if (!isset($configysf2dmr['DMR Network']['PCUnlink'])) { $configysf2dmr['DMR Network']['PCUnlink'] = "0"; }	
+	if (!isset($configysf2dmr['DMR Network']['PCUnlink'])) { $configysf2dmr['DMR Network']['PCUnlink'] = "0"; }
 	if (!isset($configysf2dmr['DMR Network']['Debug'])) { $configysf2dmr['DMR Network']['Debug'] = "0"; }
 	if ( (!isset($configysf2dmr['DMR Network']['TGListFile'])) && (file_exists('/usr/local/etc/TGList_BM.txt')) ) { $configysf2dmr['DMR Network']['TGListFile'] = "/usr/local/etc/TGList_BM.txt"; }
 	if (!isset($configysf2dmr['DMR Id Lookup']['File'])) { $configysf2dmr['DMR Id Lookup']['File'] = "/usr/local/etc/DMRIds.dat"; }
@@ -1955,9 +1955,9 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 	$configysf2p25['Log']['DisplayLevel'] = "0";
 	$configysf2p25['Log']['FileLevel'] = "0";
 	$configysf2p25['Log']['FilePath'] = "/var/log/pi-star";
-	$configysf2p25['Log']['FileRoot'] = "YSF2P25";	
+	$configysf2p25['Log']['FileRoot'] = "YSF2P25";
 	if (isset($configysf2p25['aprs.fi'])) { unset($configysf2p25['aprs.fi']); }
-	
+
 	// Clean up for NXDN Gateway
 	if (file_exists('/etc/nxdngateway')) {
 		if (isset($confignxdngateway['Network']['HostsFile'])) {
@@ -1995,7 +1995,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 		if(!isset($confignxdngateway['aprs.fi']['Description'])) { $confignxdngateway['aprs.fi']['Description'] = "APRS for NXDN Gateway"; }
 		if(!isset($confignxdngateway['aprs.fi']['Suffix'])) { $confignxdngateway['aprs.fi']['Suffix'] = "N"; }
 	}
-	
+
 
 	// Clean up legacy options
 	$dmrGatewayVer = exec("DMRGateway -v | awk {'print $3'} | cut -c 1-8");
@@ -2003,7 +2003,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 		unset($configdmrgateway['XLX Network 1']);
 		unset($configdmrgateway['XLX Network 2']);
 	}
-	
+
 	// Migrate YSFGateway Config
 	$ysfGatewayVer = exec("YSFGateway -v | awk {'print $3'} | cut -c 1-8");
 	if ($ysfGatewayVer > 20180303) {
@@ -2030,7 +2030,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 		$configysfgateway['FCS Network']['Port'] = "42001";
 		$configysfgateway['FCS Network']['Rooms'] = "/usr/local/etc/FCSHosts.txt";
 	}
-	
+
 	// Add the DAPNet Config
 	if (!isset($configdapnetgw['General']['Callsign'])) { $configdapnetgw['General']['Callsign'] = "M1ABC"; }
 	if (!isset($configdapnetgw['General']['RptAddress'])) { $configdapnetgw['General']['RptAddress'] = "127.0.0.1"; }
@@ -2057,7 +2057,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 	if (!isset($configmmdvm['POCSAG Network']['ModeHang'])) { $configmmdvm['POCSAG Network']['ModeHang'] = "5"; }
 	if (!isset($configmmdvm['POCSAG Network']['Debug'])) { $configmmdvm['POCSAG Network']['Debug'] = "0"; }
 	if (isset($configmmdvm['POCSAG Network']['ModeHang'])) { $configmmdvm['POCSAG Network']['ModeHang'] = "5"; }
-	
+
 	// Create the hostfiles.nodextra file if required
 	if (empty($_POST['confHostFilesNoDExtra']) != TRUE ) {
 		if (escapeshellcmd($_POST['confHostFilesNoDExtra']) == 'ON' )  {
@@ -2149,7 +2149,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
 			exec('sudo chown root:root /etc/ysfgateway');				// Set the owner
 		}
 	}
-	
+
 	// NXDNGateway config file wrangling
 	$nxdngwContent = "";
         foreach($confignxdngateway as $nxdngwSection=>$nxdngwValues) {
@@ -2297,7 +2297,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/configure.php") {
                         exec('sudo chown root:root /etc/ysf2p25');                              // Set the owner
                 }
         }
-	
+
 	// dmr2ysf config file wrangling
         $dmr2ysfContent = "";
         foreach($configdmr2ysf as $dmr2ysfSection=>$dmr2ysfValues) {
@@ -3504,7 +3504,7 @@ $ysfHosts = fopen("/usr/local/etc/YSFHosts.txt", "r"); ?>
     </tr>
     <tr>
       <td align="left"><a class="tooltip2" href="#">DMR TG:<span><b>YSF2DMR TG</b>Enter your DMR TG here</span></a></td>
-      <td align="left" colspan="2"><input type="text" name="ysf2dmrTg" size="13" maxlength="7" value="<?php if (isset($configysf2dmr['DMR Network']['StartupDstId'])) { echo $configysf2dmr['DMR Network']['StartupDstId']; } ?>" /></td>  
+      <td align="left" colspan="2"><input type="text" name="ysf2dmrTg" size="13" maxlength="7" value="<?php if (isset($configysf2dmr['DMR Network']['StartupDstId'])) { echo $configysf2dmr['DMR Network']['StartupDstId']; } ?>" /></td>
     </tr>
     <?php } ?>
     <?php if (file_exists('/etc/dstar-radio.mmdvmhost') && $configysf2nxdn['Enabled']['Enabled'] == 1) { ?>
@@ -3591,11 +3591,11 @@ $ysfHosts = fopen("/usr/local/etc/YSFHosts.txt", "r"); ?>
     </select></td>
     </tr>
     <?php } ?>
-	    
-	    
-	    
-	    
-	    
+
+
+
+
+
     </table>
 	<div><input type="button" value="<?php echo $lang['apply'];?>" onclick="submitform()" /><br /><br /></div>
 <?php } ?>
@@ -3650,7 +3650,7 @@ $p25Hosts = fopen("/usr/local/etc/P25Hosts.txt", "r");
     </table>
 	<div><input type="button" value="<?php echo $lang['apply'];?>" onclick="submitform()" /><br /><br /></div>
 <?php } ?>
-	
+
 <?php if (file_exists('/etc/dstar-radio.mmdvmhost') && ($configmmdvm['NXDN Network']['Enable'] == 1 || $configdmr2nxdn['Enabled']['Enabled'] == 1) ) { ?>
 	<div><b><?php echo $lang['nxdn_config'];?></b></div>
     <table>
@@ -3739,7 +3739,7 @@ $p25Hosts = fopen("/usr/local/etc/P25Hosts.txt", "r");
       </tr>
     </table>
 	<div><input type="button" value="<?php echo $lang['apply'];?>" onclick="submitform()" /><br /><br /></div>
-<?php } ?>	
+<?php } ?>
 
 	<div><b><?php echo $lang['fw_config'];?></b></div>
     <table>
@@ -3854,11 +3854,7 @@ echo '
 <br />
 </div>
 <div class="footer">
-Pi-Star web config, &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
-Need help? Click <a style="color: #ffffff;" href="https://www.facebook.com/groups/pistarusergroup/" target="_new">here for the Support Group</a><br />
-Get your copy of Pi-Star from <a style="color: #ffffff;" href="http://www.pistar.uk/downloads/" target="_blank">here</a>.<br />
-<br />
-</div>
+<?php print(VENDOR_FOOTER_STRING); ?></div>
 </div>
 </body>
 </html>
@@ -3868,11 +3864,7 @@ Get your copy of Pi-Star from <a style="color: #ffffff;" href="http://www.pistar
 <br />
 </div>
 <div class="footer">
-Pi-Star web config, &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
-Need help? Click <a style="color: #ffffff;" href="https://www.facebook.com/groups/pistarusergroup/" target="_new">here for the Support Group</a><br />
-Get your copy of Pi-Star from <a style="color: #ffffff;" href="http://www.pistar.uk/downloads/" target="_blank">here</a>.<br />
-<br />
-</div>
+<?php print(VENDOR_FOOTER_STRING); ?></div>
 </div>
 </body>
 </html>

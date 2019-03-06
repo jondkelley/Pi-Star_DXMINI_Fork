@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" style="margin: 0px;">
   <div style="font-size: 8px; text-align: right; padding-right: 8px;">Pi-Star:<?php echo $configPistarRelease['Pi-Star']['Version']?> / Dashboard:<?php echo $version; ?></div>
   <h1>Pi-Star Digital Voice - Expert Editors</h1>
   <p style="padding-right: 5px; text-align: right; color: #ffffff;">
@@ -9,7 +9,7 @@
     <a href="/admin/config_backup.php" style="color: #ffffff;"><?php echo $lang['backup_restore'];?></a> |
     <a href="/admin/configure.php" style="color: #ffffff;"><?php echo $lang['configuration'];?></a>
   </p>
-  <p style="padding-right: 5px; text-align: right; color: #ffffff;">
+  <p style="background-color: #282828; height: 40px; padding-bottom: 0px; margin: 0px; padding-right: 5px; text-align: right; color: #ffffff;">
     <b>Quick Edit:</b>
     <a href="edit_dstarrepeater.php" style="color: #ffffff;">DStarRepeater</a> |
     <a href="edit_ircddbgateway.php" style="color: #ffffff;">ircDDBGateway</a> |

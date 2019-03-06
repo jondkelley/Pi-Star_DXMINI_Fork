@@ -1,4 +1,5 @@
 <?php
+include_once('config/dxmini.php');
 require_once('config/version.php');
 require_once('config/ircddblocal.php');
 require_once('config/language.php');
@@ -21,6 +22,8 @@ $pistarReleaseConfig = '/etc/pistar-release';
 $configPistarRelease = array();
 $configPistarRelease = parse_ini_file($pistarReleaseConfig, true);
 ?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" lang="en">
@@ -45,7 +48,7 @@ $configPistarRelease = parse_ini_file($pistarReleaseConfig, true);
     <script type="text/javascript">
       $.ajaxSetup({ cache: false });
     </script>
-    <link href="/featherlight.css" type="text/css" rel="stylesheet" />
+    <link href="/featherlight-vendor.css" type="text/css" rel="stylesheet" />
     <script src="/featherlight.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
@@ -61,7 +64,8 @@ $configPistarRelease = parse_ini_file($pistarReleaseConfig, true);
   echo ' <a href="/admin/power.php" style="color: #ffffff;">'.$lang['power'].'</a> |'."\n";
   echo ' <a href="/admin/update.php" style="color: #ffffff;">'.$lang['update'].'</a> |'."\n";
   } ?>
- <a href="/admin/configure.php" style="color: #ffffff;"><?php echo $lang['configuration'];?></a>
+ <a href="/admin/configure.php" style="color: #ffffff;"><?php echo $lang['configuration'];?></a> |
+ <a href="https://www.dxmini.com/contact.html" style="color: #ffffff;">Contact DXMINI Support</a>
 </p>
 </div>
 
@@ -179,7 +183,7 @@ if (file_exists('/etc/dstar-radio.mmdvmhost')) {
 	echo '<div id="localTxs">'."\n";
 	include 'mmdvmhost/localtx.php';				// MMDVMDash Local Trasmissions
 	echo '</div>'."\n";
-	
+
 	// If POCSAG is enabled, show the information pannel
 	$testMMDVModePOCSAG = getConfigItem("POCSAG Network", "Enable", $mmdvmconfigfile);
 	if ( $testMMDVModePOCSAG == 1 ) {
@@ -262,12 +266,7 @@ if (file_exists('/etc/dstar-radio.mmdvmhost')) {
 </div>
 
 <div class="footer">
-Pi-Star / Pi-Star Dashboard, &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
-ircDDBGateway Dashboard by Hans-J. Barthen (DL5DI),<br />
-MMDVMDash developed by Kim Huebel (DG9VH), <br />
-Need help? Click <a style="color: #ffffff;" href="https://www.facebook.com/groups/pistarusergroup/" target="_new">here for the Facebook Group</a><br />
-or Click <a style="color: #ffffff;" href="https://forum.pistar.uk/" target="_new">here to join the Support Forum</a><br />	
-Get your copy of Pi-Star from <a style="color: #ffffff;" href="http://www.pistar.uk/downloads/" target="_new">here</a>.<br />
+<?php print(VENDOR_FOOTER_STRING); ?>
 </div>
 
 </div>

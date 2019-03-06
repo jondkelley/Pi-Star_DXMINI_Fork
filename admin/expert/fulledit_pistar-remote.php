@@ -1,4 +1,5 @@
 <?php
+require_once('../config/dxmini.php');
 // Load the language support
 require_once('../config/language.php');
 //Load the Pi-Star Release file
@@ -47,7 +48,7 @@ if(isset($_POST['data'])) {
         exec('sudo chmod 644 /etc/pistar-remote');
         exec('sudo chown root:root /etc/pistar-remote');
         exec('sudo mount -o remount,ro /');
-  
+
         // Reload the affected daemon
 		    exec('sudo systemctl restart pistar-remote.service');		    // Reload the daemon
 
@@ -77,11 +78,7 @@ fclose($fh);
 </div>
 
 <div class="footer">
-Pi-Star / Pi-Star Dashboard, &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
-ircDDBGateway Dashboard by Hans-J. Barthen (DL5DI),<br />
-MMDVMDash developed by Kim Huebel (DG9VH), <br />
-Need help? Click <a style="color: #ffffff;" href="https://www.facebook.com/groups/pistarusergroup/" target="_new">here for the Support Group</a><br />
-Get your copy of Pi-Star from <a style="color: #ffffff;" href="http://www.pistar.uk/downloads/" target="_new">here</a>.<br />
+<?php print(VENDOR_FOOTER_STRING); ?>
 </div>
 
 </div>

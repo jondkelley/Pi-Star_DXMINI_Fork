@@ -51,7 +51,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/power.php") {
   <tr><th colspan="2"><?php echo $lang['power'];?></th></tr>
   <?php
         if ( escapeshellcmd($_POST["action"]) == "reboot" ) {
-                echo '<tr><td colspan="2" style="background: #000000; color: #00ff00;"><br /><br />Reboot command has been sent to your Pi,
+                echo '<tr><td colspan="2" style="background: #000000; color: #00ff00;"><br /><br />Reboot command has been sent to your DXMONOEmbedded Rasberry Pi,
                         <br />please wait 50 secs for it to reboot.<br />
                         <br />You will be re-directed back to the
                         <br />dashboard automatically in 50 seconds.<br /><br /><br />
@@ -63,7 +63,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/power.php") {
                 exec('sleep 5 && sudo shutdown -r now > /dev/null &');
                 };
         if ( escapeshellcmd($_POST["action"]) == "shutdown" ) {
-                echo '<tr><td colspan="2" style="background: #000000; color: #00ff00;"><br /><br />Shutdown command has been sent to your Pi,
+                echo '<tr><td colspan="2" style="background: #000000; color: #00ff00;"><br /><br />Shutdown command has been sent to your DXMINI Embedded Pi Board,
                         <br /> please wait 30 secs for it to fully shutdown<br />before removing the power.<br /><br /><br /></td></tr>';
                 system('sudo mount -o remount,ro / > /dev/null &');
                 exec('sleep 5 && sudo shutdown -h now > /dev/null &');
@@ -79,11 +79,11 @@ if ($_SERVER["PHP_SELF"] == "/admin/power.php") {
   <tr>
     <td align="center">
       Reboot<br />
-      <button style="border: none; background: none;" name="action" value="reboot"><img src="/images/reboot.png" border="0" alt="Reboot" /></button>
+      <button style="border: none; background: none;" name="action" value="reboot"><img width=128 src="/images/reboot.png" border="0" alt="Reboot" /></button>
     </td>
     <td align="center">
       Shutdown<br />
-      <button style="border: none; background: none;" name="action" value="shutdown"><img src="/images/shutdown.png" border="0" alt="Shutdown" /></button>
+      <button style="border: none; background: none;" name="action" value="shutdown"><img width=128 src="/images/shutdown.png" border="0" alt="Shutdown" /></button>
     </td>
   </tr>
   </table>
@@ -91,11 +91,7 @@ if ($_SERVER["PHP_SELF"] == "/admin/power.php") {
 <?php } ?>
   </div>
   <div class="footer">
-  Pi-Star web config, &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
-  Need help? Click <a style="color: #ffffff;" href="https://www.facebook.com/groups/pistarusergroup/" target="_new">here for the Support Group</a><br />
-  Get your copy of Pi-Star from <a style="color: #ffffff;" href="http://www.pistar.uk/downloads/" target="_blank">here</a>.<br />
-  <br />
-  </div>
+  <?php print(VENDOR_FOOTER_STRING); ?>  </div>
   </div>
   </body>
   </html>

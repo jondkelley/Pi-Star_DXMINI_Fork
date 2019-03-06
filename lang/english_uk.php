@@ -6,20 +6,20 @@
 //
 $lang = array (
   // Banner texts
-  "digital_voice"               =>  "Digital Voice",
+  "digital_voice"               =>  "@DXMINI",
   "configuration"               =>  "Configuration",
-  "dashboard_for"               =>  "Dashboard for",
+  "dashboard_for"               =>  "Console for",
   // Banner links
-  "dashboard"                   =>  "Dashboard",
+  "dashboard"                   =>  "Console",
   "admin"                       =>  "Admin",
   "power"                       =>  "Power",
   "update"                      =>  "Update",
   "backup_restore"              =>  "Backup/Restore",
   "factory_reset"               =>  "Factory Reset",
-  "live_logs"                   =>  "Live Logs",
+  "live_logs"                   =>  "MMDVM Modem Logs",
   // Config page section headdings
-  "hardware_info"               =>  "Gateway Hardware Information",
-  "control_software"            =>  "Control Software",
+  "hardware_info"               =>  "DXMINI Hardware Information",
+  "control_software"            =>  "Radio Control Subsystem",
   "mmdvmhost_config"            =>  "MMDVMHost Configuration",
   "general_config"              =>  "General Configuration",
   "dmr_config"                  =>  "DMR Configuration",

@@ -1,4 +1,5 @@
 <?php
+require_once('../config/dxmini.php');
 // Load the language support
 require_once('../config/language.php');
 //Load the Pi-Star Release file
@@ -53,7 +54,7 @@ if (!file_exists('/etc/pistar-css.ini')) {
 	$fileContent .= "[BannerExtText]\nEnabled=0\nText=Some long text entry\n";
 	fwrite($outFile, $fileContent);
 	fclose($outFile);
-	
+
 	// Put the file back where it should be
 	exec('sudo mount -o remount,rw /');                             // Make rootfs writable
 	exec('sudo cp /tmp/bW1kd4jg6b3N0DQo.tmp /etc/pistar-css.ini');  // Move the file back
@@ -144,10 +145,10 @@ echo '<form action="" method="post">'."\n";
 		echo "<input type=\"hidden\" value=\"$section\" name=\"$section\" />\n";
 		echo "<table>\n";
 		echo "<tr><th colspan=\"2\">$section</th></tr>\n";
-		// print all other values as input fields, so can edit. 
+		// print all other values as input fields, so can edit.
 		// note the name='' attribute it has both section and key
 		foreach($values as $key=>$value) {
-		  echo "<tr><td align=\"right\" width=\"30%\">$key</td><td align=\"left\"><input type=\"text\" name=\"{$section}[$key]\" value=\"$value\" /></td></tr>\n";			
+		  echo "<tr><td align=\"right\" width=\"30%\">$key</td><td align=\"left\"><input type=\"text\" name=\"{$section}[$key]\" value=\"$value\" /></td></tr>\n";
 		}
 		echo "</table>\n";
 		echo '<input type="submit" value="'.$lang['apply'].'" />'."\n";
@@ -164,12 +165,7 @@ echo '<input type="button" onclick="javascript:factoryReset();" value="'.$lang['
 </div>
 
 <div class="footer">
-Pi-Star / Pi-Star Dashboard, &copy; Andy Taylor (MW0MWZ) 2014-<?php echo date("Y"); ?>.<br />
-ircDDBGateway Dashboard by Hans-J. Barthen (DL5DI),<br />
-MMDVMDash developed by Kim Huebel (DG9VH), <br />
-Need help? Click <a style="color: #ffffff;" href="https://www.facebook.com/groups/pistarusergroup/" target="_new">here for the Support Group</a><br />
-Get your copy of Pi-Star from <a style="color: #ffffff;" href="http://www.pistar.uk/downloads/" target="_new">here</a>.<br />
-</div>
+<?php print(VENDOR_FOOTER_STRING); ?></div>
 
 </div>
 </body>
